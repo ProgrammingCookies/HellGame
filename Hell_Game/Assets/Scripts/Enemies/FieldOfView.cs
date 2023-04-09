@@ -19,7 +19,7 @@ public class FieldOfView : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerRef = GameObject.FindGameObjectWIthTag("Player");
+        playerRef = GameObject.FindGameObjectWithTag("Player");
     }
 
     private IEnumerator FOVCeck(){
@@ -36,10 +36,10 @@ public class FieldOfView : MonoBehaviour
 
         if(rangeCheck.Length > 0){
             Transform target = rangeCheck[0].transform;
-            Vector2 directionToTraget = (target.position - transform.position).normalized;
+            Vector2 directionToTarget = (target.position - transform.position).normalized;
 
             if(Vector2.Angle(transform.up, directionToTarget) < angle / 2){
-                float distanceToTarget = Vector2.Distance(transform.position - target.position);
+                float distanceToTarget = Vector2.Distance(transform.position, target.position);
 
                 if(!Physics2D.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionLayer))
                     CanSeePlayer = true;
